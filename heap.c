@@ -17,8 +17,12 @@ typedef struct Heap{
 } Heap;
 
 
-void* heap_top(Heap* pq){
+void* heap_top(Heap* pq) {
+  if (pq == NULL || pq->size == 0) {
+    printf("El montículo está vacío\n");
     return NULL;
+  }
+  return pq->heapArray[0].data;
 }
 
 
@@ -29,7 +33,7 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
-
+  
 }
 
 Heap* createHeap() {
