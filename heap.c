@@ -81,7 +81,7 @@ void heap_pop(Heap* pq){
        pq->heapArray[index] = pq->heapArray[right];
        pq->heapArray[right] = temp;
        index = right;
-       right = index * 2 + 2
+       right = index * 2 + 2;
      }
    }
 }
