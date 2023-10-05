@@ -58,7 +58,32 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
-  
+  if (pq->size == 0) {
+    printf("El montículo está vacío\n");
+    return;
+  }
+  heapElem temp = pq->heapArray[0];
+  pq->heapArray[0] = pq->heapArray[pq->size - 1];
+  pq->heapArray[pq->size - 1] = temp;
+  pq->size--;
+  int index = 0;
+  int left = index * 2 + 1;
+  int right = index * 2 + 2;
+   while ((left < pq->size || right < pq->size) && (pq->heapArray[index].priority < pq->heapArray[left].priority || pq->heapArray[index].priority < pq->heapArray[right].priority)){
+     if (right >= pq->size || pq->heapArray[left].priority > pq->heapArray[right].priority){
+       temp = pq->heapArray[index];
+       pq->heapArray[index] = pq->heapArray[left];
+       pq->heapArray[left] = temp;
+       index = left;
+       left = index * 2 + 1;
+     } else {
+       temp = pq->heapArray[index];
+       pq->heapArray[index] = pq->heapArray[right];
+       pq->heapArray[right] = temp;
+       index = right;
+       right = index * 2 + 2
+     }
+   }
 }
 
 Heap* createHeap() {
