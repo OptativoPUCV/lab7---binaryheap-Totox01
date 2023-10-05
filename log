@@ -1,0 +1,26 @@
+Thu 05 Oct 2023 10:11:16 PM UTC: 
+ heap.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+heap.c: In function ‘createHeap’:
+heap.c:41:7: error: array subscript ‘Heap {aka struct Heap}[0]’ is partly outside array bounds of ‘unsigned char[8]’ [-Werror=array-bounds]
+   41 |   heap->capac = 3;
+      |       ^~
+heap.c:36:24: note: referencing an object of size 8 allocated by ‘malloc’
+   36 |   Heap* heap = (Heap*) malloc (sizeof(Heap*));
+      |                        ^~~~~~~~~~~~~~~~~~~~~~
+heap.c:42:7: error: array subscript ‘Heap {aka struct Heap}[0]’ is partly outside array bounds of ‘unsigned char[8]’ [-Werror=array-bounds]
+   42 |   heap->heapArray = (heapElem*) malloc (sizeof(heapElem*) * heap->capac);
+      |       ^~
+heap.c:36:24: note: referencing an object of size 8 allocated by ‘malloc’
+   36 |   Heap* heap = (Heap*) malloc (sizeof(Heap*));
+      |                        ^~~~~~~~~~~~~~~~~~~~~~
+heap.c:48:7: error: array subscript ‘Heap {aka struct Heap}[0]’ is partly outside array bounds of ‘unsigned char[8]’ [-Werror=array-bounds]
+   48 |   heap->size = 0;
+      |       ^~
+heap.c:36:24: note: referencing an object of size 8 allocated by ‘malloc’
+   36 |   Heap* heap = (Heap*) malloc (sizeof(Heap*));
+      |                        ^~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+3af55f6
