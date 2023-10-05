@@ -32,19 +32,21 @@ void heap_pop(Heap* pq){
 
 }
 
-Heap* createHeap(){
-  Heap* heap = (Heap*) malloc (sizeof(Heap*));
-  if (heap == NULL){
+Heap* createHeap() {
+ 
+  Heap* heap = (Heap*) malloc(sizeof(Heap));
+  if (heap == NULL) {
     printf("Error al reservar memoria para el Heap\n");
     return NULL;
   }
   heap->capac = 3;
-  heap->heapArray = (heapElem*) malloc (sizeof(heapElem*) * heap->capac);
-  if (heap->heapArray == NULL){
+  heap->heapArray = (heapElem*) malloc(heap->capac * sizeof(heapElem));
+  if (heap->heapArray == NULL) {
     printf("Error al reservar memoria para el arreglo del Heap\n");
-    free(heap);
+    free(heap); 
     return NULL;
   }
   heap->size = 0;
   return heap;
 }
+
